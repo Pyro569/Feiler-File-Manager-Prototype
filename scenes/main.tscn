@@ -24,18 +24,18 @@ shape = SubResource("SphereShape3D_w8rvq")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1.27585, 4.9104)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Folder"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2, 0, 11)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.20007e-06, 2, 11)
 mesh = SubResource("BoxMesh_sq4gk")
 
 [node name="Area3D" type="Area3D" parent="Folder"]
 script = ExtResource("2_up1xc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Folder/Area3D"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2, -0.000989676, 11)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.20007e-06, 1.99901, 11)
 shape = SubResource("BoxShape3D_b4xj5")
 
 [node name="Label3D" type="Label3D" parent="Folder/Area3D"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2, 0.971506, 11)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.20007e-06, 0.971506, 11)
 pixel_size = 0.0121
 text = "Folder Name"
 
