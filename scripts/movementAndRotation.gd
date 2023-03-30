@@ -29,6 +29,10 @@ var _q = false
 var _e = false
 var _shift = false
 var _alt = false
+var _esc = false
+
+var prev_escape
+var lock_on = true
 
 func _input(event):
 	# Receives mouse motion
@@ -38,8 +42,6 @@ func _input(event):
 	# Receives mouse button input
 	if event is InputEventMouseButton:
 		match event.button_index:
-			MOUSE_BUTTON_LEFT: # Only allows rotation if left click down
-				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED if event.pressed else Input.MOUSE_MODE_VISIBLE)
 			MOUSE_BUTTON_WHEEL_UP: # Increases max velocity
 				_vel_multiplier = clamp(_vel_multiplier * 1.1, 0.2, 20)
 			MOUSE_BUTTON_WHEEL_DOWN: # Decereases max velocity
@@ -48,6 +50,8 @@ func _input(event):
 	# Receives key input
 	if event is InputEventKey:
 		match event.keycode:
+			KEY_ESCAPE:	
+				_esc = event.pressed
 			KEY_W:
 				_w = event.pressed
 			KEY_S:
@@ -65,11 +69,23 @@ func _input(event):
 			KEY_ALT:
 				_alt = event.pressed
 
+func test_if_lock_mouse():
+	if(_esc != prev_escape):
+		print(_esc)
+		if(_esc):
+			lock_on = !lock_on
+	if(lock_on):
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	prev_escape = _esc
+
 # Updates mouselook and movement every frame
 func _process(delta):
 	move_and_slide()
 	_update_mouselook()
 	_update_movement(delta)
+	test_if_lock_mouse()
 
 # Updates camera movement
 func _update_movement(delta):
