@@ -12,7 +12,6 @@ func _on_mouse_exited():
 
 func _on_input_event(camera, event, position, normal, shape_idx):
 	print("input event", event)
-	#OS.execute("C:\\Windows\\System32\\WindowsPowerShell\\v1.0l\\powershell.exe", args, [], true)
 	OS.execute("CMD.exe", ["/C", "cd C:/ && START powershell.exe"], output, true, true)
 	print(output)
 
