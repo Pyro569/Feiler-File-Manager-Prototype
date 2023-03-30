@@ -21,7 +21,9 @@ class File:
 	
 # includes folders too
 var filesInDirectory = []
+var currentDirectory = "C:/"
 
+# Updates filesInDirectory to be the files in the current directory
 func update_dir_contents(path):
 	var dir = DirAccess.open(path)
 	if dir:
@@ -42,6 +44,3 @@ func update_dir_contents(path):
 			file_name = dir.get_next()
 	else:
 		print("An error occurred when trying to access the path.")
-
-func _ready():
-	update_dir_contents("C:/Users/nathan.mills/Documents/GitHub/Feiler-File-Manager/")
