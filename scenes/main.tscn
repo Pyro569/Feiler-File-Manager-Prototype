@@ -1,3 +1,32 @@
-[gd_scene format=3 uid="uid://c717h4sbifgmo"]
+[gd_scene load_steps=5 format=3 uid="uid://c717h4sbifgmo"]
+
+[ext_resource type="Script" path="res://scripts/CharacterBody3D.gd" id="1_bwv3q"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nb7ru"]
+size = Vector3(0.58351, 1, 0.484802)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b4xj5"]
+size = Vector3(2, 1, 2)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3qn6t"]
 
 [node name="Node3D" type="Node3D"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0803652, -0.0397885, -0.00669718)
+script = ExtResource("1_bwv3q")
+
+[node name="Camera" type="Camera3D" parent="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("BoxShape3D_nb7ru")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.35494, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.466199, 0)
+shape = SubResource("BoxShape3D_b4xj5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PlaneMesh_3qn6t")
