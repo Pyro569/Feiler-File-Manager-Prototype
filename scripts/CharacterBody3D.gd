@@ -28,9 +28,9 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	if(Input.is_action_pressed("left")):
-		rotate_y(1.0)
+		rotate_y(0.1)
 	elif(Input.is_action_pressed("right")):
-		rotate_y(-1.0)
+		rotate_y(-0.1)
 	
 
 	move_and_slide()
