@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://c717h4sbifgmo"]
+[gd_scene load_steps=12 format=3 uid="uid://c85jyldumg3rf"]
 
 [ext_resource type="Script" path="res://scripts/movementAndRotation.gd" id="1_l4jme"]
-[ext_resource type="Script" path="res://scenes/FileCollision.gd" id="2_up1xc"]
+[ext_resource type="Script" path="res://scripts/FileCollision.gd" id="2_1y7to"]
 [ext_resource type="Texture2D" uid="uid://muhcsmfrkmhe" path="res://assets/Annotation 2023-03-30 094236.png" id="3_4liih"]
 [ext_resource type="Script" path="res://scripts/panosky.gd" id="4_xrmy2"]
+[ext_resource type="Script" path="res://scripts/filesDropdown.gd" id="5_1eix7"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_w8rvq"]
 
@@ -32,21 +33,20 @@ script = ExtResource("1_l4jme")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 shape = SubResource("SphereShape3D_w8rvq")
 
-[node name="Folder" type="StaticBody3D" parent="."]
+[node name="File" type="Area3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1.27585, 4.9104)
+script = ExtResource("2_1y7to")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Folder"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="File"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.20007e-06, 2, 11)
 mesh = SubResource("BoxMesh_sq4gk")
+skeleton = NodePath("")
 
-[node name="Area3D" type="Area3D" parent="Folder"]
-script = ExtResource("2_up1xc")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Folder/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="File"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.20007e-06, 1.99901, 11)
 shape = SubResource("BoxShape3D_b4xj5")
 
-[node name="Label3D" type="Label3D" parent="Folder/Area3D"]
+[node name="Label3D" type="Label3D" parent="File"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.20007e-06, 0.971506, 11)
 pixel_size = 0.0121
 text = "Folder Name"
@@ -55,6 +55,13 @@ text = "Folder Name"
 environment = SubResource("Environment_1025o")
 script = ExtResource("4_xrmy2")
 
-[connection signal="input_event" from="Folder/Area3D" to="Folder/Area3D" method="_on_input_event"]
-[connection signal="mouse_entered" from="Folder/Area3D" to="Folder/Area3D" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Folder/Area3D" to="Folder/Area3D" method="_on_mouse_exited"]
+[node name="ItemList" type="ItemList" parent="."]
+offset_left = 170.0
+offset_top = 94.0
+offset_right = 447.0
+offset_bottom = 458.0
+script = ExtResource("5_1eix7")
+
+[connection signal="input_event" from="File" to="File" method="_on_input_event"]
+[connection signal="mouse_entered" from="File" to="File" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="File" to="File" method="_on_mouse_exited"]
