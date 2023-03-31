@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://htw5vf3ygj3t"]
+[gd_scene load_steps=13 format=3 uid="uid://htw5vf3ygj3t"]
 
 [ext_resource type="Script" path="res://scripts/movementAndRotation.gd" id="1_8ymtw"]
 [ext_resource type="Script" path="res://scripts/FileCollision.gd" id="2_kiobu"]
 [ext_resource type="Texture2D" uid="uid://muhcsmfrkmhe" path="res://assets/Annotation 2023-03-30 094236.png" id="3_8dri2"]
+[ext_resource type="Script" path="res://scripts/LabelLogic.gd" id="3_bv6ff"]
 [ext_resource type="Script" path="res://scripts/panosky.gd" id="4_0dy3o"]
 [ext_resource type="Script" path="res://scripts/filesDropdown.gd" id="5_pl2cs"]
 
@@ -45,6 +46,7 @@ shape = SubResource("BoxShape3D_b4xj5")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.20007e-06, 0.971506, 11)
 pixel_size = 0.0121
 text = "Folder Name"
+script = ExtResource("3_bv6ff")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="File"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.20007e-06, 2, 11)
@@ -66,3 +68,6 @@ script = ExtResource("5_pl2cs")
 [connection signal="mouse_entered" from="File" to="File" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="File" to="File" method="_on_mouse_exited"]
 [connection signal="ready" from="File" to="File" method="_ready"]
+[connection signal="item_clicked" from="dropdown" to="dropdown" method="_on_item_clicked"]
+[connection signal="mouse_entered" from="dropdown" to="dropdown" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="dropdown" to="dropdown" method="_on_mouse_exited"]

@@ -21,6 +21,14 @@ class File:
 		self.size = 1
 		self.dir = dir
 	
+	func openInExplorer():
+		# TODO: this will open the path to the file in file explorer
+		pass
+	
+	func rename(name):
+		# TODO: this will update the real name in the file too
+		self.name = name
+	
 # includes folders too
 var filesInDirectory = []
 var currentDirectory = "C:/"
