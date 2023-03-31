@@ -1,19 +1,19 @@
-[gd_scene load_steps=12 format=3 uid="uid://c85jyldumg3rf"]
+[gd_scene load_steps=12 format=3 uid="uid://htw5vf3ygj3t"]
 
-[ext_resource type="Script" path="res://scripts/movementAndRotation.gd" id="1_l4jme"]
-[ext_resource type="Script" path="res://scripts/FileCollision.gd" id="2_1y7to"]
-[ext_resource type="Texture2D" uid="uid://muhcsmfrkmhe" path="res://assets/Annotation 2023-03-30 094236.png" id="3_4liih"]
-[ext_resource type="Script" path="res://scripts/panosky.gd" id="4_xrmy2"]
-[ext_resource type="Script" path="res://scripts/filesDropdown.gd" id="5_1eix7"]
+[ext_resource type="Script" path="res://scripts/movementAndRotation.gd" id="1_8ymtw"]
+[ext_resource type="Script" path="res://scripts/FileCollision.gd" id="2_kiobu"]
+[ext_resource type="Texture2D" uid="uid://muhcsmfrkmhe" path="res://assets/Annotation 2023-03-30 094236.png" id="3_8dri2"]
+[ext_resource type="Script" path="res://scripts/panosky.gd" id="4_0dy3o"]
+[ext_resource type="Script" path="res://scripts/filesDropdown.gd" id="5_pl2cs"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_w8rvq"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_sq4gk"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_b4xj5"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_sq4gk"]
+
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_e14py"]
-panorama = ExtResource("3_4liih")
+panorama = ExtResource("3_8dri2")
 
 [sub_resource type="Sky" id="Sky_e87hq"]
 sky_material = SubResource("PanoramaSkyMaterial_e14py")
@@ -26,7 +26,7 @@ sky = SubResource("Sky_e87hq")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0803652, -0.0397885, -0.00669718)
-script = ExtResource("1_l4jme")
+script = ExtResource("1_8ymtw")
 
 [node name="Camera" type="Camera3D" parent="CharacterBody3D"]
 
@@ -35,12 +35,7 @@ shape = SubResource("SphereShape3D_w8rvq")
 
 [node name="File" type="Area3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1.27585, 4.9104)
-script = ExtResource("2_1y7to")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="File"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.20007e-06, 2, 11)
-mesh = SubResource("BoxMesh_sq4gk")
-skeleton = NodePath("")
+script = ExtResource("2_kiobu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="File"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.20007e-06, 1.99901, 11)
@@ -51,17 +46,23 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.200
 pixel_size = 0.0121
 text = "Folder Name"
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="File"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.20007e-06, 2, 11)
+mesh = SubResource("BoxMesh_sq4gk")
+skeleton = NodePath("")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1025o")
-script = ExtResource("4_xrmy2")
+script = ExtResource("4_0dy3o")
 
-[node name="ItemList" type="ItemList" parent="."]
+[node name="dropdown" type="ItemList" parent="."]
 offset_left = 170.0
 offset_top = 94.0
 offset_right = 447.0
 offset_bottom = 458.0
-script = ExtResource("5_1eix7")
+script = ExtResource("5_pl2cs")
 
 [connection signal="input_event" from="File" to="File" method="_on_input_event"]
 [connection signal="mouse_entered" from="File" to="File" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="File" to="File" method="_on_mouse_exited"]
+[connection signal="ready" from="File" to="File" method="_ready"]

@@ -3,9 +3,10 @@ extends ItemList
 var fileRefrence
 var xyPos
 
-func _init(fileRefrence, xyPos):
+func setToNewFile(fileRefrence, xyPos):
 	self.fileRefrence = fileRefrence
 	self.xyPos = xyPos
+	print(xyPos)
 	set_position(xyPos)
 
 # Called when the node enters the scene tree for the first time.

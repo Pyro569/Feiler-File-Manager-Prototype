@@ -7,24 +7,26 @@ var lastClick
 var file
 var FilesDropdown = preload("filesDropdown.gd")
 
-# This will be initialized by the fileDroppedDown
-func _init(file):
+# for testing,
+	#_init(Directory.new("fake_file.exe", 2, "C:/"))
+
+func setFile(file):
 	self.file = file
 
+func _init():
+	# for testing,
+	setFile(Directory.File.new("fake_file.exe", 2, "C:/"))
+
 func _on_mouse_entered():
-	print("mouse entered")
 	pass # Replace with function body.
 
 func _on_mouse_exited():
-	print("mouse exited")
+	pass
 
 
 func _on_input_event(camera, event, position, normal, shape_idx):
-	print("input event", event.button_mask)
-	
 	# If any button on the mouse is pressed
 	if(event.button_mask > 0):
-		print("asdasdasdasdasd")
 		# Do this because you can click and drag your mouse around on the object and it will keep on calling this
 		if(event.button_mask != lastClick):
 			# Left click
@@ -32,8 +34,7 @@ func _on_input_event(camera, event, position, normal, shape_idx):
 				print("left click")
 			# Right click
 			if(event.button_mask == 2):
-				print("new")
-				FilesDropdown.new(file, global_position)
-		lastClick = event.button_mask
+				print("set dropdown")
+				get_node("/root/Node3D/dropdown").setToNewFile(file, get_viewport().get_mouse_position())
+	lastClick = event.button_mask
 	#OS.execute("CMD.exe", ["/C", "cd C:/ && START powershell.exe"], output, true, true)
-	
