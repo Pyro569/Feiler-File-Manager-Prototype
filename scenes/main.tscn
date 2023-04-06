@@ -43,9 +43,14 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.200
 shape = SubResource("BoxShape3D_b4xj5")
 
 [node name="Label3D" type="Label3D" parent="File"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.20007e-06, 0.971506, 11)
+transform = Transform3D(-0.401, 0, -6.05493e-08, 0, 0.401, 0, 6.05493e-08, 0, -0.401, 0.493277, 2.527, 10.499)
 pixel_size = 0.0121
-text = "Folder Name"
+text = "File Name
+"
+horizontal_alignment = 0
+vertical_alignment = 0
+autowrap_mode = 1
+width = 200.0
 script = ExtResource("3_bv6ff")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="File"]

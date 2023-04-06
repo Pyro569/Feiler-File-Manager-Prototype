@@ -15,13 +15,19 @@ func setFile(file):
 
 func _init():
 	# for testing,
-	setFile(Directory.File.new("fake_file.exe", 2, "C:/"))
+	setFile(Directory.File.new("file.png", 2, "res://assets/"))
+	print(file.size)
+	print(scale, position)
+	scale *= file.size
+	#position /= file.size
+	print(scale, position)
 
 func _on_mouse_entered():
 	pass # Replace with function body.
 
 func _on_mouse_exited():
 	pass
+	
 
 
 func _on_input_event(camera, event, position, normal, shape_idx):

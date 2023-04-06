@@ -19,8 +19,8 @@ func _ready(): # sets the WorldEvironment sky texture to your desktop background
 							return
 		var desktoptexture = ImageTexture.new()
 		desktoptexture.set_image(desktopimage)
-		print(desktopimage, desktoptexture)
+		#print(desktopimage, desktoptexture)
 		var newsky = PanoramaSkyMaterial.new()
 		newsky.set_panorama(desktoptexture)
-		print(newsky)
+		#print(newsky)
 		environment.sky.set_material(newsky)

@@ -10,7 +10,7 @@ class File:
 	# 2 is executable
 	var type
 	
-	# Size in MB
+	# Size in KB
 	# TODO:
 	var size
 	var dir
@@ -18,8 +18,14 @@ class File:
 	func _init(name, type, dir):
 		self.name = name
 		self.type = type
-		self.size = 1
 		self.dir = dir
+		var file = FileAccess.open(dir + name, FileAccess.READ)
+		if file != null:
+			self.size = file.get_length() / 1000
+		else:
+			print("test")
+			self.size = 1
+		
 	
 	func openInExplorer():
 		# TODO: this will open the path to the file in file explorer
