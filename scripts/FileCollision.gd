@@ -14,13 +14,7 @@ func setFile(file):
 	self.file = file
 
 func _init():
-	# for testing,
-	setFile(Directory.File.new("file.png", 2, "res://assets/"))
-	print(file.size)
-	print(scale, position)
-	scale *= file.size
-	#position /= file.size
-	print(scale, position)
+	pass
 
 func _on_mouse_entered():
 	pass # Replace with function body.

@@ -8,5 +8,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	text = get_node("/root/Node3D/File").file.name
+	text = get_parent().get_parent().file.name
 	pass

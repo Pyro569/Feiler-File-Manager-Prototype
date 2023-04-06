@@ -43,23 +43,31 @@ var currentDirectory = "C:/"
 func update_dir_contents(path):
 	var dir = DirAccess.open(path)
 	if dir:
+		var scene = preload("res://scenes/file.tscn")
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
+		var i = 0
 		while file_name != "":
-			if dir.current_is_dir():
-				
-				filesInDirectory.push_back(File.new(file_name, 1, path + file_name))
-			else:
+			var fileObject
+			if dir.current_is_dir(): # folder
+				fileObject = File.new(file_name, 1, path + file_name)
+			else: # file
 				var file_type = (file_name.rsplit("."))
 				file_type = file_type[file_type.size() - 1]
 				match file_type:
 					"exe":
-						filesInDirectory.push_back(File.new(file_name, 2, path + file_name))
+						fileObject = File.new(file_name, 2, path + file_name)
 					_:
-						filesInDirectory.push_back(File.new(file_name, 0, path + file_name))
+						fileObject = File.new(file_name, 0, path + file_name)
+			filesInDirectory.push_back(fileObject)
 			file_name = dir.get_next()
+			var instance = scene.instantiate()
+			add_child(instance)
+			instance.position.x = i * 200
+			instance.file = fileObject
 	else:
 		print("An error occurred when trying to access the path.")
+	
 	
 func _init():
 	update_dir_contents(currentDirectory)

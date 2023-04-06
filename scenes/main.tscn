@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://htw5vf3ygj3t"]
+[gd_scene load_steps=11 format=3 uid="uid://htw5vf3ygj3t"]
 
 [ext_resource type="Script" path="res://scripts/movementAndRotation.gd" id="1_8ymtw"]
+[ext_resource type="Script" path="res://scripts/Directory.gd" id="1_eexaa"]
 [ext_resource type="Texture2D" uid="uid://muhcsmfrkmhe" path="res://assets/Annotation 2023-03-30 094236.png" id="3_8dri2"]
 [ext_resource type="Script" path="res://scripts/panosky.gd" id="4_0dy3o"]
 [ext_resource type="PackedScene" uid="uid://bb752on3eyhmg" path="res://scenes/file.tscn" id="5_n4v7p"]
@@ -19,6 +20,7 @@ background_mode = 2
 sky = SubResource("Sky_e87hq")
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_eexaa")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0803652, -0.0397885, -0.00669718)
