@@ -37,7 +37,7 @@ class File:
 	
 # includes folders too
 var filesInDirectory = []
-var currentDirectory = "C:/"
+var currentDirectory = "C:/Users"
 
 # Updates filesInDirectory to be the files in the current directory
 func update_dir_contents(path):
@@ -63,8 +63,11 @@ func update_dir_contents(path):
 			file_name = dir.get_next()
 			var instance = scene.instantiate()
 			add_child(instance)
-			instance.position.x = i * 200
+			print("T:" + file_name)
+			instance.setPosition(Vector3(i * 2, 0, 0))
+			#instance.global_position = Vector3(i * 200, 0, 0)
 			instance.file = fileObject
+			i += 1
 	else:
 		print("An error occurred when trying to access the path.")
 	

@@ -13,6 +13,9 @@ var FilesDropdown = preload("filesDropdown.gd")
 func setFile(file):
 	self.file = file
 
+func setPosition(pos):
+	global_position = pos
+
 func _init():
 	pass
 

@@ -8,5 +8,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	text = get_parent().get_parent().file.name
+	if(get_parent().get_parent().file != null):
+		text = get_parent().get_parent().file.name
 	pass
