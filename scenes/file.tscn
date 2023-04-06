@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://bb752on3eyhmg"]
+
+[ext_resource type="Script" path="res://scripts/FileCollision.gd" id="1_xp2an"]
+[ext_resource type="Script" path="res://scripts/LabelLogic.gd" id="2_qpg0e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_of362"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2q7hi"]
+
+[node name="File" type="Area3D"]
+script = ExtResource("1_xp2an")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_of362")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+transform = Transform3D(1, 0, -6.3573e-08, 0, 1, 0, 6.3573e-08, 0, 1, 0, 0.000990033, 0)
+mesh = SubResource("BoxMesh_2q7hi")
+skeleton = NodePath("")
+
+[node name="Label3D" type="Label3D" parent="CollisionShape3D"]
+transform = Transform3D(0.401, 0, 0, 0, 0.401, 0, 0, 0, 0.401, -0.493278, 0.52799, 0.501)
+pixel_size = 0.0121
+text = "File Name
+"
+horizontal_alignment = 0
+vertical_alignment = 0
+autowrap_mode = 1
+width = 200.0
+script = ExtResource("2_qpg0e")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="ready" from="." to="." method="_ready"]
