@@ -1,6 +1,7 @@
 extends Node
 
 var directory = ""
+var username = OS.get_environment("USERNAME")
 
 class File:
 	var name
@@ -37,7 +38,7 @@ class File:
 	
 # includes folders too
 var filesInDirectory = []
-var currentDirectory = "C:/Windows/"
+var currentDirectory = "C:/users/"+username+"/"
 
 # Updates filesInDirectory to be the files in the current directory
 func update_dir_contents(path):
