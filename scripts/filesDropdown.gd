@@ -62,6 +62,7 @@ func _on_item_clicked(index, at_position, mouse_button_index):
 					if "File" in child.name:
 						child.queue_free()
 				get_parent().update_dir_contents(get_parent().currentDirectory)
+				get_node("/root/Node3D/CharacterBody3D").global_position = Vector3(0, 0, 0)
 			print("Open")
 		_:
 			print("")

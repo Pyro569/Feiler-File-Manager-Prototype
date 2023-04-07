@@ -95,6 +95,7 @@ func go_back_dir():
 			if "File" in child.name:
 				child.queue_free()
 		get_parent().update_dir_contents(get_parent().currentDirectory)
+		global_position = Vector3(0, 0, 0)
 	prev_backspace = _backspace
 
 # Updates mouselook and movement every frame
