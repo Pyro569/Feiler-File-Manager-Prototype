@@ -37,7 +37,7 @@ class File:
 	
 # includes folders too
 var filesInDirectory = []
-var currentDirectory = "C:/Users/nathan.mills/Desktop/blender-3.4.1-windows-x64/"
+var currentDirectory = "C:/Users/"
 
 # Updates filesInDirectory to be the files in the current directory
 func update_dir_contents(path):
