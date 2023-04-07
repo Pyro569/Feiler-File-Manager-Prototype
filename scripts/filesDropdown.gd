@@ -50,13 +50,17 @@ func _on_item_clicked(index, at_position, mouse_button_index):
 			print("Rename")
 		
 		1:
-			# Does not work with directories yet
 			print(fileRefrence.type)
 			if(fileRefrence.type != 1):
 				OS.execute("CMD.exe", ["/C", "cd C:/ && START " + fileRefrence.dir])
 			else:
-				print("GO TO THIS NEXT DIR")
-			#OS.create_process(fileRefrence.dir, [])
+				get_parent().currentDirectory = fileRefrence.dir
+				# Remove all previous files
+				var children = get_parent().get_children()
+				for child in children:
+					if "File" in child.name:
+						child.queue_free()
+				get_parent().update_dir_contents(get_parent().currentDirectory)
 			print("Open")
 		_:
 			print("")

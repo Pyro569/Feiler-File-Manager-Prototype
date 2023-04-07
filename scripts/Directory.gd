@@ -37,7 +37,7 @@ class File:
 	
 # includes folders too
 var filesInDirectory = []
-var currentDirectory = "C:/Windows/"
+var currentDirectory = "C:/Users/nathan.mills/Desktop/blender-3.4.1-windows-x64/"
 
 # Updates filesInDirectory to be the files in the current directory
 func update_dir_contents(path):
@@ -50,7 +50,7 @@ func update_dir_contents(path):
 		while file_name != "":
 			var fileObject
 			if dir.current_is_dir(): # folder
-				fileObject = File.new(file_name, 1, path + file_name)
+				fileObject = File.new(file_name, 1, path + file_name + "/")
 			else: # file
 				var file_type = (file_name.rsplit("."))
 				file_type = file_type[file_type.size() - 1]
@@ -60,25 +60,19 @@ func update_dir_contents(path):
 					_:
 						fileObject = File.new(file_name, 0, path + file_name)
 			filesInDirectory.push_back(fileObject)
+			file_name = dir.get_next()
 			var instance = scene.instantiate()
 			add_child(instance)
-			print("T:" + file_name)
 			instance.position = Vector3(i * 4, 0, 0)
 			#instance.global_position = Vector3(i * 200, 0, 0)
 			instance.file = fileObject
+			i += 1
 			var file = FileAccess.open(path + file_name, FileAccess.READ)
 			if file != null:
 				instance.scale *= log(pow(file.get_length(), 0.33333333333333))
-				print("FILE: " + file_name + str(file.get_length()))
-			else:
-				print("FOLDER: " + file_name)
-				
 			#print(str(file) + path + file_name)
-			file_name = dir.get_next()
-			i += 1
 	else:
 		print("An error occurred when trying to access the path.")
-	
-	
+
 func _init():
 	update_dir_contents(currentDirectory)
