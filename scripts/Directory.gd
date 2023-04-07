@@ -37,7 +37,7 @@ class File:
 	
 # includes folders too
 var filesInDirectory = []
-var currentDirectory = "C:/Users/nathan.mills/Desktop/Games/testing/"
+var currentDirectory = "C:/Users/nathan.mills/Desktop/blender-3.4.1-windows-x64/"
 
 # Updates filesInDirectory to be the files in the current directory
 func update_dir_contents(path):
@@ -64,7 +64,7 @@ func update_dir_contents(path):
 			var instance = scene.instantiate()
 			add_child(instance)
 			print("T:" + file_name)
-			instance.position = Vector3(i * 2, 0, 0)
+			instance.position = Vector3(i * 4, 0, 0)
 			#instance.global_position = Vector3(i * 200, 0, 0)
 			instance.file = fileObject
 			i += 1
