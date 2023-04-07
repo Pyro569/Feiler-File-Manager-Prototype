@@ -47,8 +47,8 @@ func _on_item_clicked(index, at_position, mouse_button_index):
 	match(index):
 		# Rename
 		0:
+			OS.execute("CMD.exe", ["/C", "cd C:/ && START powershell.exe -command Rename-Item "+fileRefrence.dir+" "])
 			print("Rename")
-		
 		1:
 			print(fileRefrence.type)
 			if(fileRefrence.type != 1):
