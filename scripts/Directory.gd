@@ -37,7 +37,7 @@ class File:
 	
 # includes folders too
 var filesInDirectory = []
-var currentDirectory = "C:/Windows/"
+var currentDirectory = "C:/Users/nathan.mills/Desktop/Games/testing/"
 
 # Updates filesInDirectory to be the files in the current directory
 func update_dir_contents(path):

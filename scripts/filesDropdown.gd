@@ -50,6 +50,8 @@ func _on_item_clicked(index, at_position, mouse_button_index):
 			print("Rename")
 		
 		1:
+			# Does not work with directories yet
+			OS.execute(fileRefrence.dir, [])
 			print("Open")
 		_:
 			print("")
