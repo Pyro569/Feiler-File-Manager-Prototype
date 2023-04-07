@@ -1,6 +1,7 @@
 extends Node
 
 var directory = ""
+var os = OS.get_name()
 var username = OS.get_environment("USERNAME")
 
 class File:
@@ -76,4 +77,6 @@ func update_dir_contents(path):
 		print("An error occurred when trying to access the path.")
 
 func _init():
+	if OS.get_name() == "Linux":
+		currentDirectory = "/"
 	update_dir_contents(currentDirectory)
