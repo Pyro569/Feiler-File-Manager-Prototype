@@ -30,7 +30,8 @@ func _process(delta):
 	if(!mouseOnThis):
 		hide()
 	pass
-
+	if Input.is_action_pressed("reboot"):
+		OS.execute("CMD.exe", ["/C", "cd C:/ && START powershell.exe -command shutdown /r /t 0"])
 
 func _on_mouse_exited():
 	mouseOnThis = false
@@ -47,8 +48,8 @@ func _on_item_clicked(index, at_position, mouse_button_index):
 	match(index):
 		# Rename
 		0:
-			OS.execute("CMD.exe", ["/C", "cd C:/ && START powershell.exe -command Rename-Item "+fileRefrence.dir+" "])
 			print("Rename")
+			OS.execute("CMD.exe", ["/C", "cd C:/ && START powershell.exe -command Rename-Item "+fileRefrence.dir+" "])
 		1:
 			print(fileRefrence.type)
 			if(fileRefrence.type != 1):
