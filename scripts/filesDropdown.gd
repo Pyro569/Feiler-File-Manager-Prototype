@@ -47,12 +47,12 @@ func _on_item_clicked(index, at_position, mouse_button_index):
 	match(index):
 		# Rename
 		0:
-			OS.execute("CMD.exe", ["/C", "cd C:/ && START powershell.exe -command Rename-Item "+fileRefrence.dir+" "])
 			print("Rename")
+			OS.execute("CMD.exe", ["/C", "cd C:/ && START powershell.exe -command Rename-Item "+fileRefrence.dir+" "])
 		1:
 			print(fileRefrence.type)
 			if(fileRefrence.type != 1):
-				OS.execute("CMD.exe", ["/C", "cd C:/ && START " + fileRefrence.dir])
+				OS.create_process("CMD.exe", ["/C", "cd C:/ && START " + fileRefrence.dir])
 			else:
 				get_parent().currentDirectory = fileRefrence.dir
 				# Remove all previous files
