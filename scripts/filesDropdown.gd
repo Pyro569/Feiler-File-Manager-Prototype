@@ -51,7 +51,12 @@ func _on_item_clicked(index, at_position, mouse_button_index):
 		
 		1:
 			# Does not work with directories yet
-			OS.execute(fileRefrence.dir, [])
+			print(fileRefrence.type)
+			if(fileRefrence.type != 1):
+				OS.execute("CMD.exe", ["/C", "cd C:/ && START " + fileRefrence.dir])
+			else:
+				print("GO TO THIS NEXT DIR")
+			#OS.create_process(fileRefrence.dir, [])
 			print("Open")
 		_:
 			print("")

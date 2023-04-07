@@ -63,7 +63,7 @@ func update_dir_contents(path):
 			var instance = scene.instantiate()
 			add_child(instance)
 			print("T:" + file_name)
-			instance.position = Vector3(i * 2, 0, 0)
+			instance.position = Vector3(i * 4, 0, 0)
 			#instance.global_position = Vector3(i * 200, 0, 0)
 			instance.file = fileObject
 			var file = FileAccess.open(path + file_name, FileAccess.READ)
