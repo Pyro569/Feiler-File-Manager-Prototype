@@ -7,6 +7,7 @@ var lastClick
 var file
 var FilesDropdown = preload("filesDropdown.gd")
 var prevKeyBackspace
+var lastLeftClickTime = 10000
 
 # for testing,
 	#_init(Directory.new("fake_file.exe", 2, "C:/"))
@@ -30,7 +31,12 @@ func _on_input_event(camera, event, position, normal, shape_idx):
 		if(event.button_mask != lastClick):
 			# Left click
 			if(event.button_mask == 1):
-				print("left click")
+				# Double-click opens file
+				if(Time.get_ticks_msec() - lastLeftClickTime < 500):
+					get_node("/root/Node3D/dropdown").open(file)
+					print("left click")
+					lastLeftClickTime = 1000
+				lastLeftClickTime = Time.get_ticks_msec()
 			# Right click
 			if(event.button_mask == 2):
 				print("set dropdown")
