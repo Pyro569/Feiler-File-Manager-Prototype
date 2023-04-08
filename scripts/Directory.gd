@@ -41,9 +41,21 @@ class File:
 var filesInDirectory = []
 var currentDirectory = "C:/users/"+username+"/"
 
+func removeFileNodes():
+	# Remove all previous files and reset position
+	var children = get_children()
+	for child in children:
+		if "File" in child.name:
+			child.queue_free()
+	if(get_node_or_null("/root/Node3D/CharacterBody3D") != null):
+		get_node("/root/Node3D/CharacterBody3D").global_position = Vector3(0, 0, 0)
+
 # Updates filesInDirectory to be the files in the current directory
 func update_dir_contents(path):
+	removeFileNodes()
 	var dir = DirAccess.open(path)
+	if(get_node_or_null("/root/Node3D/DirEdit") != null):
+		get_node_or_null("/root/Node3D/DirEdit").text = currentDirectory
 	if dir:
 		var scene = preload("res://scenes/file.tscn")
 		dir.list_dir_begin()
@@ -64,7 +76,7 @@ func update_dir_contents(path):
 			filesInDirectory.push_back(fileObject)
 			var instance = scene.instantiate()
 			add_child(instance)
-			instance.position = Vector3(i * 4, 0, 0)
+			instance.position = Vector3(i * 3, 0, 0)
 			#instance.global_position = Vector3(i * 200, 0, 0)
 			instance.file = fileObject
 			var file = FileAccess.open(path + file_name, FileAccess.READ)

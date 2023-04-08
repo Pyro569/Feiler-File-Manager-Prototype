@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://htw5vf3ygj3t"]
+[gd_scene load_steps=11 format=3 uid="uid://htw5vf3ygj3t"]
 
 [ext_resource type="Script" path="res://scripts/movementAndRotation.gd" id="1_8ymtw"]
 [ext_resource type="Script" path="res://scripts/Directory.gd" id="1_eexaa"]
 [ext_resource type="Texture2D" uid="uid://7f8r02k5j84t" path="res://assets/jammy jellyfish.png" id="3_sftqi"]
 [ext_resource type="Script" path="res://scripts/panosky.gd" id="4_0dy3o"]
 [ext_resource type="Script" path="res://scripts/filesDropdown.gd" id="5_pl2cs"]
+[ext_resource type="Script" path="res://scripts/DirEdit.gd" id="6_vpodu"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_w8rvq"]
 
@@ -41,6 +42,14 @@ offset_right = 447.0
 offset_bottom = 458.0
 script = ExtResource("5_pl2cs")
 
+[node name="DirEdit" type="TextEdit" parent="."]
+offset_right = 2449.0
+offset_bottom = 43.0
+theme_override_font_sizes/font_size = 25
+text = "C:/"
+script = ExtResource("6_vpodu")
+
 [connection signal="item_clicked" from="dropdown" to="dropdown" method="_on_item_clicked"]
 [connection signal="mouse_entered" from="dropdown" to="dropdown" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="dropdown" to="dropdown" method="_on_mouse_exited"]
+[connection signal="gui_input" from="DirEdit" to="DirEdit" method="_on_gui_input"]

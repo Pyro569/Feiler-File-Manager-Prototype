@@ -31,7 +31,9 @@ func _process(delta):
 		hide()
 	pass
 	if Input.is_action_pressed("reboot"):
-		OS.execute("CMD.exe", ["/C", "cd C:/ && START powershell.exe -command shutdown /r /t 0"])
+		# n o
+		#OS.execute("CMD.exe", ["/C", "cd C:/ && START powershell.exe -command shutdown /r /t 0"])
+		pass
 
 func _on_mouse_exited():
 	mouseOnThis = false
@@ -49,13 +51,7 @@ func open(fileRefrence):
 		OS.create_process("CMD.exe", ["/C", "cd C:/ && START " + fileRefrence.dir])
 	else:
 		get_parent().currentDirectory = fileRefrence.dir
-		# Remove all previous files
-		var children = get_parent().get_children()
-		for child in children:
-			if "File" in child.name:
-				child.queue_free()
 		get_parent().update_dir_contents(get_parent().currentDirectory)
-		get_node("/root/Node3D/CharacterBody3D").global_position = Vector3(0, 0, 0)
 
 
 func _on_item_clicked(index, at_position, mouse_button_index):

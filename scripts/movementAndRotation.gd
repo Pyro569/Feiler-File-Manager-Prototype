@@ -30,10 +30,10 @@ var _e = false
 var _shift = false
 var _alt = false
 var _esc = false
-var _backspace = false
+var _tab = false
 
 var prev_escape
-var prev_backspace
+var prev_tab
 var lock_on = true
 
 func _input(event):
@@ -70,8 +70,8 @@ func _input(event):
 				_shift = event.pressed
 			KEY_ALT:
 				_alt = event.pressed
-			KEY_BACKSPACE:
-				_backspace = event.pressed
+			KEY_TAB:
+				_tab = event.pressed
 
 func test_if_lock_mouse():
 	if(_esc != prev_escape):
@@ -85,18 +85,12 @@ func test_if_lock_mouse():
 	prev_escape = _esc
 
 func go_back_dir():
-	if(_backspace and !prev_backspace):
+	if(_tab and !prev_tab):
 		var truncated = get_parent().currentDirectory.substr(0, get_parent().currentDirectory.length() - 1)
 		var secondLastSlash = truncated.rfind("/")
 		get_parent().currentDirectory = truncated.substr(0, secondLastSlash) + "/"
-		
-		var children = get_parent().get_children()
-		for child in children:
-			if "File" in child.name:
-				child.queue_free()
 		get_parent().update_dir_contents(get_parent().currentDirectory)
-		global_position = Vector3(0, 0, 0)
-	prev_backspace = _backspace
+	prev_tab = _tab
 
 # Updates mouselook and movement every frame
 func _process(delta):
