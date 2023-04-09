@@ -1,7 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://bb752on3eyhmg"]
+[gd_scene load_steps=11 format=3 uid="uid://bb752on3eyhmg"]
 
 [ext_resource type="Script" path="res://scripts/FileCollision.gd" id="1_xp2an"]
+[ext_resource type="PackedScene" uid="uid://nwmophnjajys" path="res://assets/fileIcons/boxOpen.glb" id="2_pqs0e"]
 [ext_resource type="Script" path="res://scripts/LabelLogic.gd" id="2_qpg0e"]
+[ext_resource type="PackedScene" uid="uid://bsb6wb2y432fm" path="res://assets/fileIcons/unknown.glb" id="2_tuxoj"]
+[ext_resource type="PackedScene" uid="uid://c6cdcm8hydug6" path="res://assets/fileIcons/exe.glb" id="4_gy5eh"]
+[ext_resource type="PackedScene" uid="uid://b4pp6w7tskfjt" path="res://assets/fileIcons/box.glb" id="5_ml2fj"]
+[ext_resource type="PackedScene" uid="uid://dytvste57xbin" path="res://assets/fileIcons/img.glb" id="6_ju707"]
+[ext_resource type="PackedScene" uid="uid://bsb6wb2y432fm" path="res://assets/fileIcons/txt.glb" id="7_kdckq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_of362"]
 
@@ -13,13 +19,38 @@ script = ExtResource("1_xp2an")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_of362")
 
+[node name="0" parent="CollisionShape3D" instance=ExtResource("2_tuxoj")]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0, 0, 0)
+visible = false
+
+[node name="1" parent="CollisionShape3D" instance=ExtResource("2_pqs0e")]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0, 0, 0)
+visible = false
+
+[node name="2" parent="CollisionShape3D" instance=ExtResource("4_gy5eh")]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0, 0, 0)
+visible = false
+
+[node name="3" parent="CollisionShape3D" instance=ExtResource("5_ml2fj")]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0, 0, 0)
+visible = false
+
+[node name="4" parent="CollisionShape3D" instance=ExtResource("6_ju707")]
+transform = Transform3D(-2.40413e-08, 0, -0.55, 0, 0.55, 0, 0.55, 0, -2.40413e-08, 0, 0, 0)
+visible = false
+
+[node name="5" parent="CollisionShape3D" instance=ExtResource("7_kdckq")]
+transform = Transform3D(-0.55, 0, -4.80825e-08, 0, 0.55, 0, 4.80825e-08, 0, -0.55, 0, 0, 0)
+visible = false
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
 transform = Transform3D(1, 0, -6.3573e-08, 0, 1, 0, 6.3573e-08, 0, 1, 0, 0.000990033, 0)
+visible = false
 mesh = SubResource("BoxMesh_2q7hi")
 skeleton = NodePath("")
 
 [node name="Label3D" type="Label3D" parent="CollisionShape3D"]
-transform = Transform3D(0.401, 0, 0, 0, 0.401, 0, 0, 0, 0.401, -0.493278, 0.52799, 0.501)
+transform = Transform3D(0.401, 0, 0, 0, 0.401, 0, 0, 0, 0.401, -0.455009, 0.322592, 0.560982)
 pixel_size = 0.0121
 text = "File Name
 "

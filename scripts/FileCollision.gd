@@ -14,6 +14,8 @@ var lastLeftClickTime = 10000
 
 func setFile(file):
 	self.file = file
+	#print(get_node_or_null("CollisionShape3D/" + str(file.type)))
+	get_node("CollisionShape3D/" + str(file.type)).show()
 
 func _init():
 	pass

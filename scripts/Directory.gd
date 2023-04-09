@@ -10,6 +10,9 @@ class File:
 	# 0 is unknown
 	# 1 is folder
 	# 2 is executable
+	# 3 is a zip
+	# 4 is a graphics file
+	# 5 is a text document
 	var type
 	
 	# Size in KB
@@ -94,6 +97,18 @@ func update_dir_contents(path):
 				match file_type:
 					"exe":
 						fileObject = File.new(file_name, 2, path + file_name)
+					"zip":
+						fileObject = File.new(file_name, 3, path + file_name)
+					"png":
+						fileObject = File.new(file_name, 4, path + file_name)
+					"jpg":
+						fileObject = File.new(file_name, 4, path + file_name)
+					"jpeg":
+						fileObject = File.new(file_name, 4, path + file_name)
+					"svg":
+						fileObject = File.new(file_name, 4, path + file_name)
+					"txt":
+						fileObject = File.new(file_name, 5, path + file_name)
 					_:
 						fileObject = File.new(file_name, 0, path + file_name)
 			filesInDirectory.push_back(fileObject)
@@ -101,7 +116,7 @@ func update_dir_contents(path):
 			add_child(instance)
 			instance.position = Vector3(i * 3, 0, 0)
 			#instance.global_position = Vector3(i * 200, 0, 0)
-			instance.file = fileObject
+			instance.setFile(fileObject)
 			instance.scale *= clamp(log(pow(resolve_size(path + file_name), 0.333333333333)), 0.5, 100000000)
 			#print(str(file) + path + file_name)
 			file_name = dir.get_next()
