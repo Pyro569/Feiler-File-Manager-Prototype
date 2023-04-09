@@ -22,6 +22,7 @@ func _ready():
 	add_item("Rename")
 	add_item("Open")
 	add_item("Delete")
+	add_item("Duplicate")
 	add_item("Copy")
 	add_item("Paste")
 	add_item("Open In Explorer")
@@ -76,20 +77,32 @@ func _on_item_clicked(index, at_position, mouse_button_index):
 	match(index):
 		# Rename
 		0:
+			# This is very broken now but i am fixing it
 			print("Rename")
 			var newName = []
 			OS.execute("CMD.exe", ["/C", "cmd /c powershell.exe -command $name = Rename-Item "+fixDir(fileRefrence.dir)+" -PassThru;Write-Host $name.Name"], newName, true, true)
 			newName[0] = newName[0].replace("\n", "").replace("\t", "")
-			if(newName[0] != "" or newName[0] == "^C"):
+			if(newName[0] != "" or "^C" in newName[0]):
 				var prevName = get_node(str(objRefrence)).file.name
 				var objFile = get_node(str(objRefrence)).file
 				objFile.name = newName[0]
 				objFile.dir = objFile.dir.trim_suffix(prevName) + newName[0]
-			print(newName)
 			
 		1:
 			open(fileRefrence)
-			print("Open")
+		2:
+			OS.move_to_trash(fileRefrence.dir)
+			get_node(str(objRefrence)).hide()
+		3:
+			var dir = DirAccess.copy_absolute(fileRefrence.dir, fileRefrence.dir.get_basename() + "(Copy)" + "." + fileRefrence.dir.get_extension())
+			print(fileRefrence.dir.get_basename() + "(Copy)" + "." + fileRefrence.dir.get_extension())
+			get_parent().update_dir_contents(get_parent().currentDirectory, false)
+		4:
+			get_parent().copyPath = fileRefrence
+			print(fileRefrence.dir.get_base_dir() + "/" + fileRefrence.dir.get_file() + "(Copy)" + "." + fileRefrence.dir.get_extension())
+		5:
+			var dir = DirAccess.copy_absolute(get_parent().copyPath.dir, fileRefrence.dir.get_base_dir() + "/" + get_parent().copyPath.dir.get_file() + "(Copy)" + "." + get_parent().copyPath.dir.get_extension())
+			get_parent().update_dir_contents(get_parent().currentDirectory, false)
 		_:
 			print("")
 	pass # Replace with function body.

@@ -3,6 +3,7 @@ extends Node
 var directory = ""
 var os = OS.get_name()
 var username = OS.get_environment("USERNAME")
+var copyPath
 
 class File:
 	var name
@@ -25,6 +26,8 @@ class File:
 		self.type = type
 		self.dir = dir
 		var file = FileAccess.open(dir + name, FileAccess.READ)
+		if type == 1:
+			dir += "/"
 		if file != null:
 			self.size = file.get_length() / 1000
 		else:
@@ -44,24 +47,24 @@ class File:
 var filesInDirectory = []
 var currentDirectory = "C:/Users/" + username + "/"
 
-func removeFileNodes():
+func removeFileNodes(reset_pos):
 	# Remove all previous files and reset position
 	var children = get_children()
 	for child in children:
 		if "File" in child.name:
 			child.queue_free()
 	if(get_node_or_null("/root/Node3D/CharacterBody3D") != null):
-		get_node("/root/Node3D/CharacterBody3D").global_position = Vector3(0, 0, 0)
+		if(reset_pos):
+			get_node("/root/Node3D/CharacterBody3D").global_position = Vector3(0, 0, 0)
 
 func resolve_size(path):
-	print(path)
 	var file = FileAccess.open(path, FileAccess.READ)
 	if file != null:
 		return file.get_length()
 	else:
 		var output = [10]
 		#OS.execute("powershell.exe", ["(ls -r " + path + " | measure -sum Length).sum"], output)
-		print(path, ": ", output[0])
+		#print(path, ": ", output[0])
 		return int(output[0])
 		#var dir = DirAccess.open(path)
 		#if dir:
@@ -77,8 +80,8 @@ func resolve_size(path):
 		#	return -1
 
 # Updates filesInDirectory to be the files in the current directory
-func update_dir_contents(path):
-	removeFileNodes()
+func update_dir_contents(path, reset_pos=true):
+	removeFileNodes(reset_pos)
 	var dir = DirAccess.open(path)
 	if(get_node_or_null("/root/Node3D/DirEdit") != null):
 		get_node_or_null("/root/Node3D/DirEdit").text = currentDirectory
@@ -122,7 +125,8 @@ func update_dir_contents(path):
 			file_name = dir.get_next()
 			i += 1
 	else:
-		print("An error occurred when trying to access the path.")
+		OS.alert("An error occurred when trying to access the path.")
+	currentDirectory = currentDirectory.replace("\\", "/")
 
 func _init():
 	if OS.get_name() == "Linux":

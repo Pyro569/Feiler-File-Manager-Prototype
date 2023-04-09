@@ -86,6 +86,7 @@ func test_if_lock_mouse():
 
 func go_back_dir():
 	if(_tab and !prev_tab):
+		get_parent().currentDirectory = get_parent().currentDirectory.replace("\\", "/")
 		var truncated = get_parent().currentDirectory.substr(0, get_parent().currentDirectory.length() - 1)
 		var secondLastSlash = truncated.rfind("/")
 		get_parent().currentDirectory = truncated.substr(0, secondLastSlash) + "/"
