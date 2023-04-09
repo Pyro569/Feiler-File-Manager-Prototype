@@ -79,9 +79,12 @@ func _on_item_clicked(index, at_position, mouse_button_index):
 		0:
 			# This is very broken now but i am fixing it
 			print("Rename")
+			
 			var newName = []
-			OS.execute("CMD.exe", ["/C", "cmd /c powershell.exe -command $name = Rename-Item "+fixDir(fileRefrence.dir)+" -PassThru;Write-Host $name.Name"], newName, true, true)
+			var doubleFixedDir = fixDir(fileRefrence.dir).replace('"', "'")
+			OS.execute("CMD.exe", ["/C", "cmd /c powershell.exe -command " + '"' + "$name = Rename-Item "+doubleFixedDir+" -PassThru;Write-Host $name.Name" + '"'], newName, true, true)
 			newName[0] = newName[0].replace("\n", "").replace("\t", "")
+			print(newName[0])
 			if(newName[0] != "" or "^C" in newName[0]):
 				var prevName = get_node(str(objRefrence)).file.name
 				var objFile = get_node(str(objRefrence)).file
