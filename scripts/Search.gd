@@ -3,7 +3,6 @@ extends TextEdit
 var mouseOnThis = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	text = get_parent().currentDirectory
 	pass # Replace with function body.
 
 
@@ -12,20 +11,6 @@ func _process(delta):
 	if(Input.get_mouse_mode() == 2):
 		release_focus()
 	pass
-
-func _on_gui_input(event):
-	# Set directory to input 
-	if(event.get_class() == "InputEventKey"):
-		if(event.pressed):
-			# If enter key
-			if(event.keycode == 4194309):
-				text = text.replace("\n", "")
-				if(text.right(1) != "/"):
-					text += "/" 
-				get_parent().currentDirectory = text
-				release_focus()
-				get_parent().update_dir_contents(text)
-				print("cd" + text)
 
 
 func _on_mouse_entered():
@@ -38,3 +23,8 @@ func _on_mouse_exited():
 func _input(event):
 	if event is InputEventMouseButton and mouseOnThis == false:
 		release_focus()
+
+
+func _on_text_changed():
+	get_parent().sortFiles(text)
+	pass # Replace with function body.

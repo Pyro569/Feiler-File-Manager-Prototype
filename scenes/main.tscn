@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://htw5vf3ygj3t"]
+[gd_scene load_steps=12 format=3 uid="uid://htw5vf3ygj3t"]
 
 [ext_resource type="Script" path="res://scripts/movementAndRotation.gd" id="1_8ymtw"]
 [ext_resource type="Script" path="res://scripts/Directory.gd" id="1_eexaa"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/panosky.gd" id="4_0dy3o"]
 [ext_resource type="Script" path="res://scripts/filesDropdown.gd" id="5_pl2cs"]
 [ext_resource type="Script" path="res://scripts/DirEdit.gd" id="6_vpodu"]
+[ext_resource type="Script" path="res://scripts/Search.gd" id="7_pv85p"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_w8rvq"]
 
@@ -50,9 +51,24 @@ theme_override_font_sizes/font_size = 25
 text = "C:/"
 script = ExtResource("6_vpodu")
 
+[node name="Search" type="TextEdit" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -43.0
+offset_right = 501.0
+offset_bottom = 11.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 25
+placeholder_text = "Search..."
+script = ExtResource("7_pv85p")
+
 [connection signal="item_clicked" from="dropdown" to="dropdown" method="_on_item_clicked"]
 [connection signal="mouse_entered" from="dropdown" to="dropdown" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="dropdown" to="dropdown" method="_on_mouse_exited"]
 [connection signal="gui_input" from="DirEdit" to="DirEdit" method="_on_gui_input"]
 [connection signal="mouse_entered" from="DirEdit" to="DirEdit" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="DirEdit" to="DirEdit" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Search" to="Search" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Search" to="Search" method="_on_mouse_exited"]
+[connection signal="text_changed" from="Search" to="Search" method="_on_text_changed"]

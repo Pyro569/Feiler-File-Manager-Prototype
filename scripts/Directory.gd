@@ -57,6 +57,16 @@ func removeFileNodes(reset_pos):
 		if(reset_pos):
 			get_node("/root/Node3D/CharacterBody3D").global_position = Vector3(0, 0, 0)
 
+func sortFiles(toSort):
+	var children = get_children()
+	print(toSort)
+	for child in children:
+		if "File" in child.name:
+			if(!(toSort in child.file.name) and toSort != ""):
+				child.hide()
+			else:
+				child.show()
+
 func resolve_size(path):
 	var file = FileAccess.open(path, FileAccess.READ)
 	if file != null:

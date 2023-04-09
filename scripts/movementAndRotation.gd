@@ -95,11 +95,12 @@ func go_back_dir():
 
 # Updates mouselook and movement every frame
 func _process(delta):
-	move_and_slide()
-	_update_mouselook()
-	_update_movement(delta)
-	test_if_lock_mouse()
-	go_back_dir()
+	if(get_viewport().gui_get_focus_owner() == null):
+		move_and_slide()
+		_update_mouselook()
+		_update_movement(delta)
+		test_if_lock_mouse()
+		go_back_dir()
 
 # Updates camera movement
 func _update_movement(delta):
