@@ -1,13 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://bb752on3eyhmg"]
+[gd_scene load_steps=10 format=3 uid="uid://bb752on3eyhmg"]
 
 [ext_resource type="Script" path="res://scripts/FileCollision.gd" id="1_xp2an"]
 [ext_resource type="PackedScene" uid="uid://nwmophnjajys" path="res://assets/fileIcons/boxOpen.glb" id="2_pqs0e"]
 [ext_resource type="Script" path="res://scripts/LabelLogic.gd" id="2_qpg0e"]
-[ext_resource type="PackedScene" uid="uid://bsb6wb2y432fm" path="res://assets/fileIcons/unknown.glb" id="2_tuxoj"]
 [ext_resource type="PackedScene" uid="uid://c6cdcm8hydug6" path="res://assets/fileIcons/exe.glb" id="4_gy5eh"]
 [ext_resource type="PackedScene" uid="uid://b4pp6w7tskfjt" path="res://assets/fileIcons/box.glb" id="5_ml2fj"]
 [ext_resource type="PackedScene" uid="uid://dytvste57xbin" path="res://assets/fileIcons/img.glb" id="6_ju707"]
-[ext_resource type="PackedScene" uid="uid://bsb6wb2y432fm" path="res://assets/fileIcons/txt.glb" id="7_kdckq"]
+[ext_resource type="PackedScene" uid="uid://bsb6wb2y432fm" path="res://assets/fileIcons/unknown.glb" id="7_kdckq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_of362"]
 
@@ -19,7 +18,7 @@ script = ExtResource("1_xp2an")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_of362")
 
-[node name="0" parent="CollisionShape3D" instance=ExtResource("2_tuxoj")]
+[node name="0" parent="CollisionShape3D" instance=ExtResource("7_kdckq")]
 transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0, 0, 0)
 visible = false
 

@@ -59,8 +59,8 @@ func resolve_size(path):
 	if file != null:
 		return file.get_length()
 	else:
-		var output = []
-		OS.execute("powershell.exe", ["(ls -r " + path + " | measure -sum Length).sum"], output)
+		var output = [10]
+		#OS.execute("powershell.exe", ["(ls -r " + path + " | measure -sum Length).sum"], output)
 		print(path, ": ", output[0])
 		return int(output[0])
 		#var dir = DirAccess.open(path)

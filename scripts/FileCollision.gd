@@ -42,6 +42,6 @@ func _on_input_event(camera, event, position, normal, shape_idx):
 			# Right click
 			if(event.button_mask == 2):
 				print("set dropdown")
-				get_node("/root/Node3D/dropdown").setToNewFile(file, get_viewport().get_mouse_position())
+				get_node("/root/Node3D/dropdown").setToNewFile(file, get_viewport().get_mouse_position(), get_path())
 	lastClick = event.button_mask
 	#OS.execute("CMD.exe", ["/C", "cd C:/ && START powershell.exe"], output, true, true)
