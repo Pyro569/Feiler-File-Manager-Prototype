@@ -27,6 +27,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0803652, -0.0397885, -0.00
 script = ExtResource("1_8ymtw")
 
 [node name="Camera" type="Camera3D" parent="CharacterBody3D"]
+current = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 shape = SubResource("SphereShape3D_w8rvq")

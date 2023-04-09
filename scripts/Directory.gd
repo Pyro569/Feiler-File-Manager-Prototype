@@ -39,7 +39,7 @@ class File:
 	
 # includes folders too
 var filesInDirectory = []
-var currentDirectory = "C:/users/"+username+"/"
+var currentDirectory = "C:/Users/" + username + "/"
 
 func removeFileNodes():
 	# Remove all previous files and reset position
@@ -49,6 +49,29 @@ func removeFileNodes():
 			child.queue_free()
 	if(get_node_or_null("/root/Node3D/CharacterBody3D") != null):
 		get_node("/root/Node3D/CharacterBody3D").global_position = Vector3(0, 0, 0)
+
+func resolve_size(path):
+	print(path)
+	var file = FileAccess.open(path, FileAccess.READ)
+	if file != null:
+		return file.get_length()
+	else:
+		var output = []
+		OS.execute("powershell.exe", ["(ls -r " + path + " | measure -sum Length).sum"], output)
+		print(path, ": ", output[0])
+		return int(output[0])
+		#var dir = DirAccess.open(path)
+		#if dir:
+		#	dir.list_dir_begin()
+		#	var size = 0
+		#	var file_name = dir.get_next()
+		#	while file_name != "":
+		#		#print(path + "/" + file_name)
+		#		size += resolve_size(path + "/" + file_name)
+		#		file_name = dir.get_next()
+		#	return size
+		#else:
+		#	return -1
 
 # Updates filesInDirectory to be the files in the current directory
 func update_dir_contents(path):
@@ -79,9 +102,7 @@ func update_dir_contents(path):
 			instance.position = Vector3(i * 3, 0, 0)
 			#instance.global_position = Vector3(i * 200, 0, 0)
 			instance.file = fileObject
-			var file = FileAccess.open(path + file_name, FileAccess.READ)
-			if file != null:
-				instance.scale *= log(pow(file.get_length(), 0.33333333333333))
+			instance.scale *= clamp(log(pow(resolve_size(path + file_name), 0.333333333333)), 0.5, 100000000)
 			#print(str(file) + path + file_name)
 			file_name = dir.get_next()
 			i += 1
