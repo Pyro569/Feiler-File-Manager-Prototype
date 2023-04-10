@@ -75,7 +75,7 @@ func resolve_size(path):
 		var output = [10]
 		#OS.execute("powershell.exe", ["(ls -r " + path + " | measure -sum Length).sum"], output)
 		#print(path, ": ", output[0])
-		return int(output[0])
+		return 100#int(output[0])
 		#var dir = DirAccess.open(path)
 		#if dir:
 		#	dir.list_dir_begin()
