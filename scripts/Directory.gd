@@ -88,11 +88,33 @@ func resolve_size(path):
 		#	return size
 		#else:
 		#	return -1
+func get_length_of_path(path):
+	var dir = DirAccess.open(path)
+	var i = 0;
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while (file_name != ""):
+			file_name = dir.get_next()
+			i += 1
+	else:
+		OS.alert("An error occurred when trying to access the path.")
+	print("NUM ", i)
+	return i
 
 # Updates filesInDirectory to be the files in the current directory
 func update_dir_contents(path, reset_pos=true):
+	var cubeSize = floor(pow(get_length_of_path(path), 0.33334)) + 1
+	var leftOverCubes = get_length_of_path(path) - pow(cubeSize, 3)
+	print("Cube", cubeSize)
+	print("leftover", leftOverCubes)
 	removeFileNodes(reset_pos)
 	var dir = DirAccess.open(path)
+	var x
+	var y
+	var z
+	
+	
 	if(get_node_or_null("/root/Node3D/DirEdit") != null):
 		get_node_or_null("/root/Node3D/DirEdit").text = currentDirectory
 	if dir:
@@ -127,7 +149,12 @@ func update_dir_contents(path, reset_pos=true):
 			filesInDirectory.push_back(fileObject)
 			var instance = scene.instantiate()
 			add_child(instance)
-			instance.position = Vector3(i * 3, 0, 0)
+			
+			x = fmod(i, cubeSize) * 5
+			y = fmod(i / cubeSize, cubeSize) * 5
+			z = (i / cubeSize / cubeSize) * 5
+			
+			instance.position = Vector3(float(x), float(y), float(z))
 			#instance.global_position = Vector3(i * 200, 0, 0)
 			instance.setFile(fileObject)
 			instance.scale *= clamp(log(pow(resolve_size(path + file_name), 0.333333333333)), 0.5, 100000000)
