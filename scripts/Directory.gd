@@ -151,10 +151,10 @@ func update_dir_contents(path, reset_pos=true):
 			add_child(instance)
 			
 			x = fmod(i, cubeSize) * 5
-			y = fmod(i / cubeSize, cubeSize) * 5
-			z = (i / cubeSize / cubeSize) * 5
+			y = fmod(floor(i / cubeSize), cubeSize) * 5
+			z = (floor(i / cubeSize / cubeSize)) * 5
 			
-			instance.position = Vector3(float(x), float(y), float(z))
+			instance.position = Vector3(float(x), float(y), float(z) - 15)
 			#instance.global_position = Vector3(i * 200, 0, 0)
 			instance.setFile(fileObject)
 			instance.scale *= clamp(log(pow(resolve_size(path + file_name), 0.333333333333)), 0.5, 100000000)
