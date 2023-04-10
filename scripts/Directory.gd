@@ -46,6 +46,7 @@ class File:
 # includes folders too
 var filesInDirectory = []
 var currentDirectory = "C:/Users/" + username + "/"
+var prevKeyR = false
 
 func removeFileNodes(reset_pos):
 	# Remove all previous files and reset position
@@ -150,9 +151,9 @@ func update_dir_contents(path, reset_pos=true):
 			var instance = scene.instantiate()
 			add_child(instance)
 			
-			x = fmod(i, cubeSize) * 8
-			y = fmod(floor(i / cubeSize), cubeSize) * 8
-			z = (floor(i / cubeSize / cubeSize)) * 8
+			x = fmod(i, cubeSize) * 11
+			y = fmod(floor(i / cubeSize), cubeSize) * 11
+			z = (floor(i / cubeSize / cubeSize)) * 11
 			
 			instance.position = Vector3(float(x), float(y), float(z) - 15)
 			#instance.global_position = Vector3(i * 200, 0, 0)

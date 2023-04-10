@@ -25,7 +25,7 @@ func _ready():
 	add_item("Duplicate")
 	add_item("Copy")
 	add_item("Paste")
-	add_item("Open In Explorer")
+	#add_item("Open In Explorer")
 	pass # Replace with function body.
 
 

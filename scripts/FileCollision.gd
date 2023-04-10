@@ -8,6 +8,7 @@ var file
 var FilesDropdown = preload("filesDropdown.gd")
 var prevKeyBackspace
 var lastLeftClickTime = 10000
+var prevKeyR = false
 
 # for testing,
 	#_init(Directory.new("fake_file.exe", 2, "C:/"))
@@ -24,7 +25,7 @@ func _on_mouse_entered():
 	pass # Replace with function body.
 
 func _on_mouse_exited():
-	pass
+	pass	
 
 func _on_input_event(camera, event, position, normal, shape_idx):
 	# If any button on the mouse is pressed
