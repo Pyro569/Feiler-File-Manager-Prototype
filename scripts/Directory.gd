@@ -133,6 +133,8 @@ func update_dir_contents(path, reset_pos=true):
 				match file_type:
 					"exe":
 						fileObject = File.new(file_name, 2, path + file_name)
+					"lnk":
+						fileObject = File.new(file_name, 2, path + file_name)
 					"zip":
 						fileObject = File.new(file_name, 3, path + file_name)
 					"png":
