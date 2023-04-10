@@ -150,9 +150,9 @@ func update_dir_contents(path, reset_pos=true):
 			var instance = scene.instantiate()
 			add_child(instance)
 			
-			x = fmod(i, cubeSize) * 5
-			y = fmod(floor(i / cubeSize), cubeSize) * 5
-			z = (floor(i / cubeSize / cubeSize)) * 5
+			x = fmod(i, cubeSize) * 8
+			y = fmod(floor(i / cubeSize), cubeSize) * 8
+			z = (floor(i / cubeSize / cubeSize)) * 8
 			
 			instance.position = Vector3(float(x), float(y), float(z) - 15)
 			#instance.global_position = Vector3(i * 200, 0, 0)
