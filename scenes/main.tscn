@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/movementAndRotation.gd" id="1_8ymtw"]
 [ext_resource type="Script" path="res://scripts/Directory.gd" id="1_eexaa"]
-[ext_resource type="Texture2D" uid="uid://7f8r02k5j84t" path="res://assets/jammy jellyfish.png" id="3_sftqi"]
+[ext_resource type="Texture2D" uid="uid://47qisv3dmee1" path="res://assets/newbackground.jpg" id="3_ubqw0"]
 [ext_resource type="Script" path="res://scripts/panosky.gd" id="4_0dy3o"]
 [ext_resource type="Script" path="res://scripts/filesDropdown.gd" id="5_pl2cs"]
 [ext_resource type="Script" path="res://scripts/DirEdit.gd" id="6_vpodu"]
@@ -11,7 +11,7 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_w8rvq"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_e14py"]
-panorama = ExtResource("3_sftqi")
+panorama = ExtResource("3_ubqw0")
 
 [sub_resource type="Sky" id="Sky_e87hq"]
 sky_material = SubResource("PanoramaSkyMaterial_e14py")

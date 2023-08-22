@@ -32,6 +32,8 @@ var _alt = false
 var _esc = false
 var _tab = false
 
+var hidden = true
+
 var prev_escape
 var prev_tab
 var lock_on = true
@@ -52,7 +54,7 @@ func _input(event):
 	# Receives key input
 	if event is InputEventKey:
 		match event.keycode:
-			KEY_ESCAPE:	
+			KEY_SPACE:	
 				_esc = event.pressed
 			KEY_W:
 				_w = event.pressed
@@ -101,6 +103,22 @@ func _process(delta):
 		_update_movement(delta)
 		test_if_lock_mouse()
 		go_back_dir()
+		
+	if(hidden):
+		get_node("/root/Node3D/DirEdit").visible = false
+		get_node("/root/Node3D/Search").visible = false
+		
+	if(Input.is_action_just_pressed("hide_unhide")):
+		if(hidden):
+			print("Setting UI Visible")
+			hidden = false
+			get_node("/root/Node3D/DirEdit").visible = true
+			get_node("/root/Node3D/Search").visible = true
+		else:
+			print("Setting UI Invisible")
+			hidden = true
+			get_node("/root/Node3D/DirEdit").visible = false
+			get_node("/root/Node3D/Search").visible = false
 
 # Updates camera movement
 func _update_movement(delta):
