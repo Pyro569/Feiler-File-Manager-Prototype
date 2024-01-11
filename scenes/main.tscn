@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://htw5vf3ygj3t"]
+[gd_scene load_steps=13 format=3 uid="uid://htw5vf3ygj3t"]
 
 [ext_resource type="Script" path="res://scripts/movementAndRotation.gd" id="1_8ymtw"]
 [ext_resource type="Script" path="res://scripts/Directory.gd" id="1_eexaa"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/filesDropdown.gd" id="5_pl2cs"]
 [ext_resource type="Script" path="res://scripts/DirEdit.gd" id="6_vpodu"]
 [ext_resource type="Script" path="res://scripts/Search.gd" id="7_pv85p"]
+[ext_resource type="PackedScene" uid="uid://b4pp6w7tskfjt" path="res://assets/fileIcons/box.glb" id="8_qoket"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_w8rvq"]
 
@@ -62,6 +63,9 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 25
 placeholder_text = "Search..."
 script = ExtResource("7_pv85p")
+
+[node name="box" parent="." instance=ExtResource("8_qoket")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.5141, 50.5709, 80.8764)
 
 [connection signal="item_clicked" from="dropdown" to="dropdown" method="_on_item_clicked"]
 [connection signal="mouse_entered" from="dropdown" to="dropdown" method="_on_mouse_entered"]
