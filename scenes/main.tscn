@@ -21,7 +21,7 @@ sky_material = SubResource("PanoramaSkyMaterial_e14py")
 background_mode = 2
 sky = SubResource("Sky_e87hq")
 
-[node name="Node3D" type="Node3D"]
+[node name="World" type="Node3D"]
 script = ExtResource("1_eexaa")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
